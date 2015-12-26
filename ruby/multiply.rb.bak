@@ -1,0 +1,54 @@
+#!/usr/bin/ruby 
+
+class Monitor
+
+  attr_reader :term1, :term2, :product
+  def initialize(maxInt)
+    @maxInt = maxInt
+  end
+
+  def play
+    while @ans != 'q' do
+      puts "ans #{@ans}"
+      setup
+      puts "What is #{term1} x #{term2} ?"
+      print "> "
+      @ans = $stdin.gets.chomp
+
+      if @ans == 'q' 
+        next
+      end
+      @ans = @ans.to_i
+
+      if checkAnswer()
+       puts "Correct!"
+      else 
+       puts "Sorry, the answer is  #{product}"
+      end
+    end
+
+  end
+
+  def setup
+    @term1 = 1 + rand(@maxInt)
+    @term2 = 1 + rand(@maxInt)
+    @product = term1 * term2
+  end
+
+
+  def checkAnswer
+    # (!) compares type too
+    if ( @ans == @product ) 
+      return true
+    else
+      return false
+    end
+
+  end
+
+
+end
+
+round = Monitor.new(10)
+
+round.play
