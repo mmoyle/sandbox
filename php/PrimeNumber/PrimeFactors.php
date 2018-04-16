@@ -11,13 +11,17 @@ class PrimeFactors
     {
         $primes = [];
 
-        if ($n > 1) {
-            if ($n % 2 === 0) {
-                $primes[] = 2;
-                $n /= 2;
+        $candidate = 2;
+        while ($n > 1) {
+            for (;$n % $candidate == 0; $n /=$candidate) {
+                $primes[] = $candidate;
             }
-            if ($n > 1)
-                $primes[] = $n;
+
+            $candidate++;
+        }
+
+        if ($n > 1) {
+            $primes[] = $n;
         }
 
         return $primes;

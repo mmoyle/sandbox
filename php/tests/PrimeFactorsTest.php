@@ -32,4 +32,19 @@ class PrimeFactorsTest extends TestCase
         $this->assertEquals([2,2], PrimeFactors::generate(4));
     }
 
+    public function testSix()
+    {
+        $this->assertEquals([2,3], PrimeFactors::generate(6));
+    }
+
+    public function testEight()
+    {
+        $this->assertEquals([2,2,2], PrimeFactors::generate(8));
+    }
+
+    public function testNine()
+    {
+        $this->assertEquals([3,3], PrimeFactors::generate(9));
+    }
+
 }
